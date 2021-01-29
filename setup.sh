@@ -20,7 +20,7 @@ elk(){
 
 _elastic(){
   #check https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/
-   helm install elasticsearch  elastic/elasticsearch --namespace default  --set imageTag=$ELK_VERSION --set replicas=1 --set esMajorVersion=7 --set resources.requests.memory=1Gi --set volumeClaimTemplate.storageClassName=hostpath --set volumeClaimTemplate.resources.requests.storage=10Gi
+   helm install elasticsearch  elastic/elasticsearch --namespace default  --set imageTag=$ELK_VERSION --set replicas=1 --set esMajorVersion=7 --set resources.requests.memory=1Gi --set volumeClaimTemplate.storageClassName=local-storage --set volumeClaimTemplate.resources.requests.storage=10Gi
 }
 
 _kibana(){
