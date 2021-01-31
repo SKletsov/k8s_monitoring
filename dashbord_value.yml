@@ -1,0 +1,12 @@
+replicaCount: 2
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    prometheus.io/scrape: 'true'
+    prometheus.io/port:   '80'
+  hosts:
+    -  "dashbord.online"
