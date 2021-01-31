@@ -13,6 +13,7 @@ elk(){
  export ELK_VERSION=7.9.2
  helm repo add elastic https://helm.elastic.co
  helm repo update
+ _dashbord
  _elastic
  _kibana
  _filebeart
@@ -34,10 +35,14 @@ _filebeart(){
 }
 
 
+_dashbord(){
+    helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+    helm install  dashbord kubernetes-dashboard/kubernetes-dashboard  -f dashbord_value.yml
+}
 
 prometeus(){
    ################ISSUE https://github.com/prometheus-operator/kube-prometheus/issues/561 #########
-   kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/release-0.43/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
+kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/release-0.43/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
 kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/release-0.43/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
 kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/release-0.43/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
 kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/release-0.43/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
